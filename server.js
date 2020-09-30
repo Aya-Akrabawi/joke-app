@@ -28,6 +28,8 @@ app.get('/favorite',renderfav)
 app.get('/details/:ids',showDetails)
 app.put('/details/:ids',updating)
 app.delete('/details/:ids',del)
+app.get('/random',randomly);
+
 
 //functions:
 function homepage(req,res){
@@ -83,6 +85,17 @@ function del(req,res){
        
     })
 }
+
+function randomly(req,res){
+    let url = `https://official-joke-api.appspot.com/jokes/programming/random`
+    superagent.get(url).then(result=>{
+        console.log(result.body);
+        result.body.foreach(item=>{
+            res.render('rand',{data:item.body})
+        })
+    })
+}
+
 client.connect().then(()=>{
     app.listen(PORT,()=>{
         console.log(`you are listening to port: ${PORT}`);
