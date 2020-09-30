@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joke App</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">home</a>
+        <a href="/favorite">favorite</a>
+        <a href="random">random Jokes</a>
+    </nav>
+    <section class="contaiAll">
+        <%if (data.length === 0){%>
+            <p>no available jokes</p>
+            <%} else {%>
+        <%data.forEach(item=>{%>              
+                    <div class="div1">
+                    <li>Joke #</li>
+                    <li><%=item.id%></li>
+                    <li><%=item.type%></li>
+                    <li><%=item.setup%></li>
+                    <li><%=item.punchline%></li>
+                    <form action="/details/<%=item.ids%>" method="get">
+                    <input type="submit" value="Details">
+                    </form>
+                     </div>
+                <%})%>
+                <%}%>
+    </section>
+</body>
+</html>

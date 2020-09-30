@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joke App</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="/">home</a>
+        <a href="/favorite">favorite</a>
+        <a href="random">random Jokes</a>
+    </nav>
+    <section class="contaiAll">            
+                    <div class="div1">
+                    <li>Joke #</li>
+                    <li><%=data.id%></li>
+                    <li><%=data.type%></li>
+                    <li><%=data.setup%></li>
+                    <li><%=data.punchline%></li>
+                    <form action="/details/<%=data.id%>?_method=PUT" method="post">
+                        <input type="text" name="id" value="<%=data.id%>">
+                        <input type="text" name="type" value="<%=data.type%>">
+                        <input type="text" name="setup" value="<%=data.setup%>">
+                        <input type="text" name="punchline" value="<%=data.punchline%>">
+                    <input type="submit" value="update">
+                    </form>
+                    <form action="/details/<%=data.id%>?_method=delete" method="post">
+                    <input type="submit" value="delete">
+                    </form>
+                     </div>
+    </section>
+</body>
+</html>
